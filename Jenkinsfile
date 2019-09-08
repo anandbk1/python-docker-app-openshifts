@@ -11,16 +11,16 @@ node{
    
    stage("Tag & Push image"){
       withDockerRegistry([credentialsId: 'dockerID',url: ""]) {
-          sh 'docker tag manee2k6/py-spartans anandbk1/py-spartans:dev'
-          sh 'docker push anandbk1/py-spartans:dev'
-          sh 'docker push anandbk1/py-spartans:latest'
+          sh 'docker tag manee2k6/py-spartans manee2k6/py-spartans:dev'
+          sh 'docker push manee2k6/py-spartans:dev'
+          sh 'docker push manee2k6/py-spartans:latest'
       }
     }
    
    stage("App deployment started"){
      sh 'oc login --token=DPwoijGmkVpymA7qqIMMJI3g3niQqUTpDvzg-aQ2sCw --server=https://api.us-west-1.starter.openshift-online.com:6443'
-     sh 'oc project jenkin-openshift'
-     sh 'oc new-app --name py-mani anandbk1/py-spartans'
+     sh 'oc project itrainspartans'
+     //sh 'oc new-app --name py-mani manee2k6/py-spartans'
       sh 'oc rollout latest dc/py-mani -o json' 
      //sh 'oc expose svc py-mani' 
     }
