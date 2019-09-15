@@ -6,22 +6,22 @@ node{
       }
    
    stage('Docker Build') {
-     def app = docker.build "manee2k6/py-spartans"
+     def app = docker.build "anandbk1/python-relic"
     }
    
    stage("Tag & Push image"){
       withDockerRegistry([credentialsId: 'dockerID',url: ""]) {
-          sh 'docker tag manee2k6/py-spartans manee2k6/py-spartans:dev'
-          sh 'docker push manee2k6/py-spartans:dev'
-          sh 'docker push manee2k6/py-spartans:latest'
+          sh 'docker tag anandbk1/python-relic anandbk1/python-relic:dev'
+          sh 'docker push anandbk1/python-relic:dev'
+          sh 'docker push anandbk1/python-relic:latest'
       }
     }
    
    stage("App deployment started"){
-     sh 'oc login --token=DPwoijGmkVpymA7qqIMMJI3g3niQqUTpDvzg-aQ2sCw --server=https://api.us-west-1.starter.openshift-online.com:6443'
-     sh 'oc project itrainspartans'
+     sh 'oc login --token=AUeAqkp8CQOqlTgbqbSv_PlvL_TxuDGQbtqDVtRQRvE --server=https://api.us-west-1.starter.openshift-online.com:6443'
+     sh 'oc project pyrelic'
      //sh 'oc new-app --name py-mani manee2k6/py-spartans'
-      sh 'oc rollout latest dc/py-mani -o json' 
+      sh 'oc rollout latest dc/pyrelic -o json' 
      //sh 'oc expose svc py-mani' 
     }
    
