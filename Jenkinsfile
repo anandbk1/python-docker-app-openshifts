@@ -20,9 +20,9 @@ node{
    stage("App deployment started"){
      sh 'oc login --token=AUeAqkp8CQOqlTgbqbSv_PlvL_TxuDGQbtqDVtRQRvE --server=https://api.us-west-1.starter.openshift-online.com:6443'
      sh 'oc project pyrelic'
-     sh 'oc new-app --name pyrelic anandbk1/python-relic'
+     //sh 'oc new-app --name pyrelic anandbk1/python-relic'
       sh 'oc rollout latest dc/pyrelic -o json' 
-     sh 'oc expose svc py-relic' 
+     //sh 'oc expose svc py-relic' 
     }
    
     stage('App deployed to Openshift environment') {
