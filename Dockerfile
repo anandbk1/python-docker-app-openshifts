@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:latest
+FROM anandbk1/python-relic
 
 MAINTAINER anandbk1
 
@@ -16,7 +16,7 @@ RUN pip install -r requirements.txt
 EXPOSE 5000
 
 # Define environment variable
-ENV NAME ITRAINSPARTANS
+ENV NAME ITRAIN-ANAND
 
 #switching account 1001
 USER 1001
