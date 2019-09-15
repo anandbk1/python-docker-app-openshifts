@@ -22,7 +22,7 @@ node{
      sh 'oc project pyrelic'
      //sh 'oc new-app --name pyrelic anandbk1/python-relic'
       sh 'oc rollout latest dc/pyrelic -o json' 
-     sh 'oc expose svc py-relic' 
+     sh 'oc expose svc pyrelic' 
     }
    
     stage('App deployed to Openshift environment') {
